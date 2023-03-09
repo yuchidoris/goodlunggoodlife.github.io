@@ -117,19 +117,48 @@
         document.body.removeChild(link);
       });
     </script>
-    <script>
-      // Save the combined image to localStorage
-      const combinedImageKey = `combinedImage-${Date.now()}`;
-      localStorage.setItem(combinedImageKey, outputImage.src);
-
-      
-  </script>
+    
 
   <a href="gallery.html">Gallery</a>
 
     
     
-    
+    <script>
+      const saveToLocalStorage = function() {
+  const combinedImageKey = `combinedImage-${Date.now()}`;
+  localStorage.setItem(combinedImageKey, outputImage.src);
+}
+
+combineBtn.addEventListener('click', function() {
+  // Get the selected frame image filename
+  const selectedFrame = document.querySelector('input[name="frame"]:checked').value;
+
+  // Load the selected frame image
+  const frame = new Image();
+  frame.src = selectedFrame;
+
+  // Combine user photo and frame photo
+  const userImage = userPhoto.src;
+  const frameImage = framePhoto.src;
+  if (userImage && frameImage) {
+    outputContainer.style.display = 'block';
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = 1024;
+    canvas.height = 1024;
+    const user = new Image();
+    user.crossOrigin = "Anonymous";
+    user.onload = function () {
+      context.drawImage(user, 0, 0, canvas.width, canvas.height);
+      context.drawImage(frame, 0, 0, canvas.width, canvas.height);
+      outputImage.src = canvas.toDataURL();
+      saveToLocalStorage(); // Call function to save image to localStorage
+    };
+    user.src = userImage;
+  }
+});
+
+    </script>
   </body>
 </html>
 
