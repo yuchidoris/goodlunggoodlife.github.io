@@ -13,30 +13,38 @@
   <body>
     <h1>Choose a frame and upload an image</h1>
 
-    <label>Choose the frame of the photo:</label>
+    <label>  Step1. Choose the frame of the photo:</label>
+    <br><br>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <label class="btn btn-secondary">
         <input type="radio" name="frame" value="frame1.png">
-        <img src="frame1.png" width="50" height="50">
+        <img src="frame1.png" width="200" height="200">
       </label>
       <label class="btn btn-secondary">
         <input type="radio" name="frame" value="frame2.png">
-        <img src="frame2.png" width="50" height="50">
+        <img src="frame2.png" width="200" height="200">
       </label>
       <label class="btn btn-secondary">
         <input type="radio" name="frame" value="frame3.png">
-        <img src="https://hahow.in/static/media/logo-black.59fdbe302d195a3dc848e4f805f681b3.svg" width="50" height="50">
+        <img src="https://hahow.in/static/media/logo-black.59fdbe302d195a3dc848e4f805f681b3.svg" width="200" height="200">
       </label>
     </div>
-
+    <br>
+    <p>  Step2. Select a photo you want to put in the frame</p>
     <input type="file" accept="image/*" id="user-image">
-    <button id="combine-btn">Combine Images</button>
     <br><br>
     <div id="output-container">
-      <img id="user-photo" src="" width="300" height="300">
-      <img id="frame-photo" src="" width="300" height="300">
-      <img id="output-image" src="" width="300" height="300">
+      <img id="frame-photo" src="" width="200" height="200">
+      <img id="user-photo" src="" width="200" height="200">
     </div>
+    <p>  Step3. Press the combine button to get the #goodlunggoodlife exclusively for you</p>
+    <button id="combine-btn">Combine Images</button>
+    <br><br>
+    <div id="output-container2">
+      <img id="output-image" src="" width="400" height="400">
+    </div>
+    <p>Congratulations on getting your own photo! Press the download button to save to your device (for cell phones, press and hold the image to save)</p>
+
 
     <script>
       window.onload = function() {
