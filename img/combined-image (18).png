@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Combine Images</title>
+    <style>
+      * {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>#GoodlungGoodlife Generator</h1>
+
+    <label>  Step1. Choose the frame of the photo:</label>
+    <br><br>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary">
+        <input type="radio" name="frame" value="frame1.png">
+        <img src="frame1.png" width="200" height="200">
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="frame" value="frame2.png">
+        <img src="frame2.png" width="200" height="200">
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="frame" value="frame3.png">
+        <img src="frame2.png" width="200" height="200">
+      </label>
+    </div>
+    <br>
+    <p>  Step2. Select a photo you want to put in the frame</p>
+    <input type="file" accept="image/*" id="user-image">
+    <br><br>
+    <div id="output-container">
+      <img id="frame-photo" src="" width="200" height="200">
+      <img id="user-photo" src="" width="200" height="200">
+    </div>
+    <p>  Step3. Press the combine button to get the #goodlunggoodlife exclusively for you</p>
+    <button id="combine-btn">Combine Images</button>
+    <br><br>
+    <div id="output-container2">
+      <img id="output-image" src="" width="400" height="400">
+    </div>
+    <p>Congratulations on getting your own photo! Press the download button to save to your device (for cell phones, press and hold the image to save)</p>
+
+
+    <script>
+      window.onload = function() {
+        const combineBtn = document.getElementById('combine-btn');
+        const userPhoto = document.getElementById('user-photo');
+        const framePhoto = document.getElementById('frame-photo');
+        const outputImage = document.getElementById('output-image');
+        const outputContainer = document.getElementById('output-container');
+
+        combineBtn.addEventListener('click', function() {
+          // Get the selected frame image filename
+          const selectedFrame = document.querySelector('input[name="frame"]:checked').value;
+
+          // Load the selected frame image
+          const frame = new Image();
+          frame.src = selectedFrame;
+
+          // Combine user photo and frame photo
+          const userImage = userPhoto.src;
+          const frameImage = framePhoto.src;
+          if (userImage && frameImage) {
+            outputContainer.style.display = 'block';
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = 1024;
+            canvas.height = 1024;
+            const user = new Image();
+            user.crossOrigin = "Anonymous";
+            user.onload = function () {
+              context.drawImage(user, 0, 0, canvas.width, canvas.height);
+              context.drawImage(frame, 0, 0, canvas.width, canvas.height);
+              outputImage.src = canvas.toDataURL();
+            };
+            user.src = userImage;
+          }
+        });
+          outputImage.download = 'combined-image.png';
+          outputImage.addEventListener('click', function() {
+          const link = document.createElement('a');
+          link.download = 'combined-image.png';
+         link.href = outputImage.src;
+          document.body.appendChild(link);
+         link.click();
+         document.body.removeChild(link);
+          });
+
+        
+
+        // Load user photo
+        const userImageInput = document.getElementById('user-image');
+        userImageInput.addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            userPhoto.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+
+        // Load frame photo
+        const frameImageInputs = document.querySelectorAll('input[name="frame"]');
+        frameImageInputs.forEach(function(input) {
+          input.addEventListener('change', function(e) {
+            framePhoto.src = e.target.value;
+          });
+        });
+      }
+    </script>
+    <button id="download-btn">Download Image</button>
+
+    <script>
+      const downloadBtn = document.getElementById('download-btn');
+      const outputImage = document.getElementById('output-image');
+    
+      downloadBtn.addEventListener('click', function() {
+        const link = document.createElement('a');
+        link.download = 'combined-image.png';
+        link.href = outputImage.src;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    </script>
+    
+
+  <a href="gallery.html">Gallery</a>
+
+    
+    
+    
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
+
+
+
+
+
