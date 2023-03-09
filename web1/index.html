@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Combine Images</title>
+  </head>
+  <body>
+    <h1>Choose a frame and upload an image</h1>
+
+    <label>Choose the frame of the photo:</label>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary">
+        <input type="radio" name="frame" value="frame1.png">
+        <img src="frame1.png" width="50" height="50">
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="frame" value="frame2.png">
+        <img src="frame2.png" width="50" height="50">
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="frame" value="frame3.png">
+        <img src="https://hahow.in/static/media/logo-black.59fdbe302d195a3dc848e4f805f681b3.svg" width="50" height="50">
+      </label>
+    </div>
+
+    <input type="file" accept="image/*" id="user-image">
+    <button id="combine-btn">Combine Images</button>
+    <br><br>
+    <div id="output-container">
+      <img id="user-photo" src="" width="300" height="300">
+      <img id="frame-photo" src="" width="300" height="300">
+      <img id="output-image" src="" width="300" height="300">
+    </div>
+
+    <script>
+      window.onload = function() {
+        const combineBtn = document.getElementById('combine-btn');
+        const userPhoto = document.getElementById('user-photo');
+        const framePhoto = document.getElementById('frame-photo');
+        const outputImage = document.getElementById('output-image');
+        const outputContainer = document.getElementById('output-container');
+
+        combineBtn.addEventListener('click', function() {
+          // Get the selected frame image filename
+          const selectedFrame = document.querySelector('input[name="frame"]:checked').value;
+
+          // Load the selected frame image
+          const frame = new Image();
+          frame.src = selectedFrame;
+
+          // Combine user photo and frame photo
+          const userImage = userPhoto.src;
+          const frameImage = framePhoto.src;
+          if (userImage && frameImage) {
+            outputContainer.style.display = 'block';
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = 1024;
+            canvas.height = 1024;
+            const user = new Image();
+            user.crossOrigin = "Anonymous";
+            user.onload = function () {
+              context.drawImage(user, 0, 0, canvas.width, canvas.height);
+              context.drawImage(frame, 0, 0, canvas.width, canvas.height);
+              outputImage.src = canvas.toDataURL();
+            };
+            user.src = userImage;
+          }
+        });
+
+        // Load user photo
+        const userImageInput = document.getElementById('user-image');
+        userImageInput.addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            userPhoto.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+
+        // Load frame photo
+        const frameImageInputs = document.querySelectorAll('input[name="frame"]');
+        frameImageInputs.forEach(function(input) {
+          input.addEventListener('change', function(e) {
+            framePhoto.src = e.target.value;
+          });
+        });
+      }
+    </script>
+    <button id="download-btn">Download Image</button>
+
+    <script>
+      const downloadBtn = document.getElementById('download-btn');
+      const outputImage = document.getElementById('output-image');
+    
+      downloadBtn.addEventListener('click', function() {
+        const link = document.createElement('a');
+        link.download = 'combined-image.png';
+        link.href = outputImage.src;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    </script>
+    
+  </body>
+</html>
+
+
+
+
+
