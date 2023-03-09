@@ -81,6 +81,17 @@
             user.src = userImage;
           }
         });
+          outputImage.download = 'combined-image.png';
+          outputImage.addEventListener('click', function() {
+          const link = document.createElement('a');
+          link.download = 'combined-image.png';
+         link.href = outputImage.src;
+          document.body.appendChild(link);
+         link.click();
+         document.body.removeChild(link);
+          });
+
+        
 
         // Load user photo
         const userImageInput = document.getElementById('user-image');
@@ -120,33 +131,6 @@
     
 
   <a href="gallery.html">Gallery</a>
-  <script>
-  const images = [];
-  if (userImage && frameImage) {
-  outputContainer.style.display = 'block';
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
-  canvas.width = 1024;
-  canvas.height = 1024;
-  const user = new Image();
-  user.crossOrigin = "Anonymous";
-  user.onload = function () {
-    context.drawImage(user, 0, 0, canvas.width, canvas.height);
-    context.drawImage(frame, 0, 0, canvas.width, canvas.height);
-    const imageData = canvas.toDataURL();
-    images.push(imageData); // Add image data to the array
-    outputImage.src = imageData;
-  };
-  user.src = userImage;
-}
-const galleryLink = document.querySelector('a[href="gallery.html"]');
-galleryLink.addEventListener('click', function(e) {
-  e.preventDefault();
-  localStorage.setItem('images', JSON.stringify(images)); // Save the images array to local storage
-  window.location.href = 'gallery.html';
-});
-
-  </script>
 
     
     
