@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gallery</title>
+  <title>Upload Images</title>
 </head>
 <body>
-  <h1>Gallery</h1>
-
-  <div id="image-container"></div>
-
+  <h1>Upload Images</h1>
+  <form action="#" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*">
+    <input type="submit" value="Upload">
+  </form>
+  <h2>Uploaded Images</h2>
+  <div id="imageList"></div>
+  
   <script>
-    const images = ['combined-image1.png', 'combined-image2.png', 'combined-image3.png']; // 替換為您實際的文件名
+    const imageList = document.getElementById("imageList");
 
-    const container = document.getElementById('image-container');
-    images.forEach(function(image) {
-      const imgElement = document.createElement('img');
-      imgElement.src = image;
-      imgElement.width = '400';
-      imgElement.height = '400';
-      container.appendChild(imgElement);
-    });
+    function handleFileSelect(event) {
+      const files = event.target.files;
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const image = document.createElement("img");
+        image.src = URL.createObjectURL(file);
+        imageList.appendChild(image);
+      }
+    }
+
+    const fileInput = document.querySelector('input[type="file"]');
+    fileInput.addEventListener("change", handleFileSelect, false);
   </script>
 </body>
 </html>
