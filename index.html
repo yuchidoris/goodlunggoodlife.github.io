@@ -102,18 +102,6 @@
         document.body.removeChild(link);
       });
     </script>
-    <script>
-      const outputImage = document.getElementById('output-image');
-    
-      outputImage.addEventListener('touchstart', function() {
-        const link = document.createElement('a');
-        link.download = 'combined-image.png';
-        link.href = outputImage.src;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
-    </script>
     
     
   </body>
