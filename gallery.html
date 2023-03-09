@@ -2,47 +2,20 @@
 <html>
   <head>
     <title>Gallery</title>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        padding: 20px;
-        font-family: sans-serif;
-      }
-      .image {
-        width: 300px;
-        height: 300px;
-        margin: 20px;
-        display: inline-block;
-        border: 1px solid #ccc;
-      }
-      .image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    </style>
   </head>
   <body>
-    <h1>Gallery</h1>
-    <div id="gallery"></div>
+    <h1>Image Gallery</h1>
+    <div id="image-container"></div>
+    
     <script>
-      // Load images from localStorage
-      const gallery = document.getElementById('gallery');
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith('combinedImage')) {
-          const imageUrl = localStorage.getItem(key);
-          const imageDiv = document.createElement('div');
-          imageDiv.classList.add('image');
-          const image = document.createElement('img');
-          image.src = imageUrl;
-          imageDiv.appendChild(image);
-          gallery.appendChild(imageDiv);
-        }
-      }
+      const images = JSON.parse(localStorage.getItem('images'));
+      const container = document.getElementById('image-container');
+      images.forEach(function(imageData) {
+        const img = document.createElement('img');
+        img.src = imageData;
+        container.appendChild(img);
+      });
     </script>
-
   </body>
 </html>
+
