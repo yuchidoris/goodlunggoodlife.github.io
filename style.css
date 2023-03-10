@@ -8,4 +8,18 @@
   body {
     font-family: 'My Font', sans-serif;
   }
+
+  #user-photo {
+    width: 216px;
+    height: 216px;
+    object-fit: cover;
+  }
+
+  #output-image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  
   
