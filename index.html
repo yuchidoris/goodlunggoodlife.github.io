@@ -78,10 +78,13 @@
         const framePhoto = document.getElementById('frame-photo');
         const outputImage = document.getElementById('output-image');
         const outputContainer = document.getElementById('output-container');
+        outputContainer.style.display = 'none';
 
         combineBtn.addEventListener('click', function() {
           // Get the selected frame image filename
           const selectedFrame = document.querySelector('input[name="frame"]:checked').value;
+          document.getElementById("output-container2").style.display = "block";
+
           
 
           // Load the selected frame image
@@ -112,6 +115,7 @@
         // Load user photo
         const userImageInput = document.getElementById('user-image');
         userImageInput.addEventListener('change', function(e) {
+          outputContainer.style.display = 'block';
           const file = e.target.files[0];
           const reader = new FileReader();
           reader.onload = function(event) {
@@ -125,6 +129,7 @@
         frameImageInputs.forEach(function(input) {
           input.addEventListener('change', function(e) {
             framePhoto.src = e.target.value;
+            outputContainer.style.display = 'block';
           });
         });
         

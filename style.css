@@ -37,7 +37,7 @@
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
-      margin: 4px 2px;
+      margin: 15px 2px;
       cursor: pointer;
       border-radius: 8px;
     }
@@ -53,7 +53,7 @@
       text-decoration: none;
       display: inline-block;
       font-size: 16px; /* 文字大小 */
-      margin: 4px 2px; /* 邊距 */
+      margin: 15px 2px; /* 邊距 */
       border-radius: 8px;
       cursor: pointer;
     }
@@ -71,7 +71,7 @@
       color: #fff;
       border-radius: 8px;
       font-size: 16px;
-      margin: 4px 2px;
+      margin: 15px 2px;
       
     }
     
@@ -96,13 +96,22 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: bottom right;
-      width: 500px; /* 您需要設置元素的寬度和高度 */
-      height: 500px;
+      width: 600px; /* 您需要設置元素的寬度和高度 */
+      height: 600px;
       position: fixed;
       bottom: 0;
       right: 0;
       z-index: 9999; /* 設定z-index值確保圖片在最上層 */
     }
+   .output-container:empty {
+      border: none;
+      background: none;
+    }
+    #output-container2 {
+      display: none;
+    }
+    
+    
     
     
 
