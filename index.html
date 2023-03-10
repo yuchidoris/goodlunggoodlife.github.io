@@ -8,12 +8,16 @@
       }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>#GoodlungGoodlife Generator</h1>
+    <div class="text-box">
+      <p>  Step1. Choose the frame of the photo:</p>
+    </div>
+    
 
-    <label>  Step1. Choose the frame of the photo:</label>
     <br><br>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <label class="btn btn-secondary">
@@ -34,20 +38,37 @@
       </label>
     </div>
     <br>
-    <p>  Step2. Select a photo you want to put in the frame</p>
-    <input type="file" accept="image/*" id="user-image">
+    <div class="text-box">
+      <p>  Step2. Select a photo you want to put in the frame</p>
+    </div>
+    
+    <div class="file-upload">
+      <input type="file" accept="image/*" id="user-image" name="user-image">
+      <label for="user-image" class="custom-file-upload">Choose a file</label>
+    </div>
+    
+   
+
     <br><br>
     <div id="output-container">
       <img id="frame-photo" src="" width="216" height="216">
-      <img id="user-photo" src="" width="216" height="216">
+      <img id="user-photo" src="" width="216" height="216" >
     </div>
-    <p>  Step3. Press the combine button to get the #goodlunggoodlife exclusively for you</p>
+    <div class="text-box">
+      <p>  Step3. Press the combine button to get the #goodlunggoodlife exclusively for you</p>
+    </div>
+    
     <button id="combine-btn">Combine Images</button>
     <br><br>
     <div id="output-container2">
-      <img id="output-image" src="" width="400" height="400">
+      <img id="output-image" src="" width="216" height="216">
     </div>
-    <p>Congratulations on getting your own photo! Press the download button to save to your device (for cell phones, press and hold the image to save)</p>
+    <div class="text-box">
+      <p>Congratulations on getting your own photo!<br /> Press the download button to save to your device<br /> (for cell phones, press and hold the image to save)</p>
+    </div>
+    <div class="logo">
+    </div>
+    
 
 
     <script>
@@ -61,6 +82,7 @@
         combineBtn.addEventListener('click', function() {
           // Get the selected frame image filename
           const selectedFrame = document.querySelector('input[name="frame"]:checked').value;
+          
 
           // Load the selected frame image
           const frame = new Image();
@@ -105,6 +127,7 @@
             framePhoto.src = e.target.value;
           });
         });
+        
       }
     </script>
     <button id="download-btn">Download Image</button>
@@ -122,6 +145,7 @@
         document.body.removeChild(link);
       });
     </script>
+
     
 
   

@@ -6,7 +6,9 @@
   }
   
   body {
+    background-color: rgb(252, 252, 252);
     font-family: 'My Font', sans-serif;
+    margin: 10px;
   }
 
   #user-photo {
@@ -15,11 +17,102 @@
     object-fit: cover;
   }
 
-  #output-image {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-  }
   
+  h1{
+    color: rgb(255, 32, 140);
+    }
   
+   
+
+    btn btn-secondary btn-lg{
+      font-family: 'My Font', sans-serif;
+
+    }
+    #combine-btn {
+      background-color: #000000; 
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+   
+    
+    #download-btn {
+      background-color: #000000; /* 背景顏色 */
+      border: none; /* 去除邊框 */
+      color: white; /* 文字顏色 */
+      padding: 15px 32px; /* 內邊距 */
+      text-align: center; /* 文字置中 */
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px; /* 文字大小 */
+      margin: 4px 2px; /* 邊距 */
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    
+
+    .file-upload input[type="file"] {
+      display: none;
+    }
+    
+    .file-upload .custom-file-upload {
+      display: inline-block;
+      padding: 15px 32px;
+      cursor: pointer;
+      background-color: #000000;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 16px;
+      margin: 4px 2px;
+      
+    }
+    
+    .file-upload .custom-file-upload:hover {
+      background-color: #c1c1c1;
+    }
+    .text-box{
+      margin: 4px 2px;
+
+    }
+
+    .text-box p {
+      background-color: rgb(236, 236, 236);
+      display: inline;
+      word-wrap: break-word;
+      word-break: break-all;
+      max-width: 200; /* 設定最大寬度 */
+    }
+
+    .logo {
+      background-image: url(logo.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      width: 500px; /* 您需要設置元素的寬度和高度 */
+      height: 500px;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      z-index: 9999; /* 設定z-index值確保圖片在最上層 */
+    }
+    
+    
+
+  
+
+    
+    
+    
+
+
+    
+    
   
