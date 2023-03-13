@@ -80,6 +80,7 @@
     }
     .text-box{
       margin: 4px 2px;
+      width: 330px;
 
     }
 
@@ -87,7 +88,7 @@
       background-color: rgb(236, 236, 236);
       display: inline;
       word-wrap: break-word;
-      word-break: break-all;
+      word-break: normal;
       max-width: 200; /* 設定最大寬度 */
     }
 
