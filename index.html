@@ -58,19 +58,23 @@
     <br><br>
     
     <div class="text-box">
-      <p>  Step3. Press the combine button to get the #goodlunggoodlife exclusively for you</p>
+      <p>  Step3. Press the combine button to get the #lungscape exclusively for you</p>
     </div>
     <br/>
     <div id="output-container2">
       <img id="output-image" src="" width="500" height="500">
     </div>
-    
+    <h3 id="text1">Congratulations on getting your own photo!<br /></h3>
+
     <button id="combine-btn">Combine Images</button>
+
     <br><br>
     
     <div class="text-box">
-      <p>Congratulations on getting your own photo!<br /> Press the download button to save to your device<br /> (for cell phones, press and hold the image to save)</p>
+        <p>  Step4. Press the download button to save to your device<br /> 
     </div>
+    <div class="">(ios users can directly long click on the image to save)<br/>
+      (Android system if you can not download please use the default browser to operate this page)</p></div>
     <div class="logo">
     </div>
     
@@ -84,6 +88,8 @@
         const outputImage = document.getElementById('output-image');
         const outputContainer = document.getElementById('output-container');
         outputContainer.style.display = 'none';
+        text1.style.display = 'none';
+
     
         combineBtn.addEventListener('click', function() {
           // Get the selected frame image filename
@@ -99,6 +105,8 @@
           const frameImage = framePhoto.src;
           if (userImage && frameImage) {
             outputContainer.style.display = 'block';
+            text1.style.display = 'block';
+
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             const outputWidth = outputImage.offsetWidth;
