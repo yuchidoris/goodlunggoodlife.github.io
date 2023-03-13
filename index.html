@@ -168,19 +168,15 @@
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        alert('The image has been downloaded to your device.');
-      });
-      const userAgent = navigator.userAgent.toLowerCase();
-        const isIos = /(iphone|ipad|ipod)/.test(userAgent);
-        const isAndroid = /(android)/.test(userAgent);
 
-        if (isIos) {
-          link.href = outputImage.src.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-          link.type = 'application/octet-stream';
-        } else if (isAndroid) {
-          link.href = 'data:application/octet-stream;base64,' + btoa(outputImage.src);
+        if (navigator && navigator.share) {
+          navigator.share({
+            title: 'Combined Image',
+            text: 'Check out this awesome combined image!',
+            url: link.href
+          });
         }
-
+      });
     </script>
 
   </body>
