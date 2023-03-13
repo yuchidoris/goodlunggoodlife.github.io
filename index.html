@@ -158,27 +158,17 @@
     <button id="download-btn">Download Image</button>
 
     <script>
-      const downloadBtn = document.getElementById('download-btn');
-      const outputImage = document.getElementById('output-image');
-    
-      downloadBtn.addEventListener('click', function() {
-        const link = document.createElement('a');
-        link.download = 'combined-image.png';
-        link.href = outputImage.src;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+     const downloadBtn = document.getElementById('download-btn');
+const outputImage = document.getElementById('output-image');
 
-        if (navigator && navigator.share) {
-          navigator.share({
-            title: 'Combined Image',
-            text: 'Check out this awesome combined image!',
-            url: link.href
-          });
-        }
-      });
-    </script>
-
+downloadBtn.addEventListener('click', function() {
+  const link = document.createElement('a');
+  link.download = 'combined-image.png';
+  link.href = outputImage.src;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
   </body>
 </html>
 
